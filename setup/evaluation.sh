@@ -1,0 +1,16 @@
+CUDA_VISIBLE_DEVICES=2 llamafactory-cli train \
+    --stage sft \
+    --do_predict true \
+    --model_name_or_path /sunhao/LLM/Meta-Llama-3-8B-Instruct \
+    --adapter_name_or_path ./saves/LLaMA3-8B/lora/sft  \
+    --eval_dataset MSciNLI_test \
+    --dataset_dir ./data \
+    --template llama3 \
+    --finetuning_type lora \
+    --output_dir ./saves/LLaMA3-8B/lora/predict2 \
+    --overwrite_cache true \
+    --overwrite_output_dir true \
+    --cutoff_len 2048 \
+    --preprocessing_num_workers 16 \
+    --per_device_eval_batch_size 1 \
+    --predict_with_generate
